@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Stress Detection</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo-box">
+                <img id="logo" src="{{ url_for('static', filename='photos/logo.png') }}" alt="logo">
+            </div>
+            <div class="header-buttons">
+                <button class="login"><i class="fa-solid fa-right-to-bracket"></i> Login</button>
+                <button class="signup"><i class="fa-solid fa-user-plus"></i> Sign Up</button>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <div class="sidebar">
+                <button class="side-btn"><i class="fa-solid fa-house"></i> Welcome</button>
+                <button class="side-btn"><i class="fa-solid fa-chart-line"></i> Predict Stress</button>
+                <button class="side-btn"><i class="fa-solid fa-circle-info"></i> About</button>
+            </div>
+
+            <div class="content">
+                <div id="welcome-section" class="section">
+                    <div class="type">
+                        <h1 class="font1">Welcome to StressType Predictor</h1>
+                        <p class="font1">Your personalized tool for understanding and predicting stress types. Get
+                            insights into your well being by inputting your data and receiving a detailed analysis of
+                            your stress patterns. Our machine learning model provides accurate predictions to help you
+                            better manage your mental health.</p>
+                        <p class="font1">Navigate to "Predict Stress" to start your journey towards better
+                            self-awareness.</p>
+                    </div>
+                    <div class="pic">
+                        <img class="image" src="{{ url_for('static', filename='photos/photo.jpg') }}"
+                            alt="Stress illustration">
+
+                    </div>
+                </div>
+
+                <div id="predict-section" class="section" style="display:none;">
+                    <div class="one">
+                        <h2 class="font2">Personal information</h2>
+                        <p class="font2">Please provide your basic demographic details.</p>
+                        <hr>
+                        <div class="form-row">
+                            <div>
+                                <label for="gender" class="font3">Gender</label>
+                                <select name="gender" id="gender" class="form-control">
+                                    <option value="">Select Gender</option>
+                                    <option value="0">Male</option>
+                                    <option value="1">Female</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="age" class="font4">Age</label>
+                                <input type="number" name="age" id="age" class="form-control"
+                                    placeholder="Enter your age" min="14" max="100">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="two">
+                        <h2 class="font3">Stress Questionnaire</h2>
+                        <p class="font3">Rate your experience across key areas to help us predict your stress type.</p>
+                        <hr>
+
+                        <div class="questionnaire-grid">
+                            <!-- Left Column -->
+                            <div class="question-column">
+                                <div class="question-group">
+                                    <label for="stress-life" class="font3">1. Have you recently experienced stress in
+                                        your life?</label>
+                                    <select name="stress-life" id="stress-life" class="form-control">
+                                        <option value="">Select</option>
+                                        <option value="0">No</option>
+                                        <option value="1">Yes</option>
+                                    </select>
+                                </div>
+
+                                <div class="question-group">
+                                    <label for="heartbeat" class="font3">2. Have you noticed rapid heartbeat or
+                                        palpitations?</label>
+                                    <select name="heartbeat" id="heartbeat" class="form-control">
+                                        <option value="">Select</option>
+                                        <option value="0">No</option>
+                                        <option value="1">Yes</option>
+                                    </select>
+                                </div>
+
+                                <div class="question-group">
+                                    <label for="anxiety" class="font3">3. How often have you been dealing with anxiety
+                                        or tension recently?</label>
+                                    <select name="anxiety" id="anxiety" class="form-control">
+                                        <option value="">Select frequency</option>
+                                        <option value="1">Rarely</option>
+                                        <option value="2">Sometimes</option>
+                                        <option value="3">Often</option>
+                                        <option value="4">Very often</option>
+                                        <option value="5">Always</option>
+                                    </select>
+                                </div>
+
+                                <div class="question-group">
+                                    <label for="sleep" class="font3">4. How often do you face sleep problems or
+                                        difficulties falling asleep?</label>
+                                    <select name="sleep" id="sleep" class="form-control">
+                                        <option value="">Select frequency</option>
+                                        <option value="1">Rarely</option>
+                                        <option value="2">Sometimes</option>
+                                        <option value="3">Often</option>
+                                        <option value="4">Very often</option>
+                                        <option value="5">Always</option>
+                                    </select>
+                                </div>
+
+                                <div class="question-group">
+                                    <label for="headaches" class="font3">5. How often have you been getting headaches
+                                        more than usual?</label>
+                                    <select name="headaches" id="headaches" class="form-control">
+                                        <option value="">Select frequency</option>
+                                        <option value="1">Rarely</option>
+                                        <option value="2">Sometimes</option>
+                                        <option value="3">Often</option>
+                                        <option value="4">Very often</option>
+                                        <option value="5">Always</option>
+                                    </select>
+                                </div>
+
+                                <div class="question-group">
+                                    <label for="irritation" class="font3">6. How often do you get irritated
+                                        easily?</label>
+                                    <select name="irritation" id="irritation" class="form-control">
+                                        <option value="">Select frequency</option>
+                                        <option value="1">Rarely</option>
+                                        <option value="2">Sometimes</option>
+                                        <option value="3">Often</option>
+                                        <option value="4">Very often</option>
+                                        <option value="5">Always</option>
+                                    </select>
+                                </div>
+
+                                <div class="question-group">
+                                    <label for="concentration" class="font3">7. How often do you have trouble
+                                        concentrating on academic tasks?</label>
+                                    <select name="concentration" id="concentration" class="form-control">
+                                        <option value="">Select frequency</option>
+                                        <option value="1">Rarely</option>
+                                        <option value="2">Sometimes</option>
+                                        <option value="3">Often</option>
+                                        <option value="4">Very often</option>
+                                        <option value="5">Always</option>
+                                    </select>
+                                </div>
+
+                                <div class="question-group">
+                                    <label for="sadness" class="font3">8. How often have you been feeling sadness or low
+                                        mood?</label>
+                                    <select name="sadness" id="sadness" class="form-control">
+                                        <option value="">Select frequency</option>
+                                        <option value="1">Rarely</option>
+                                        <option value="2">Sometimes</option>
+                                        <option value="3">Often</option>
+                                        <option value="4">Very often</option>
+                                        <option value="5">Always</option>
+                                    </select>
+                                </div>
+
+                                <div class="question-group">
+                                    <label for="illness" class="font3">9. Have you been experiencing any illness or
+                                        health issues?</label>
+                                    <select name="illness" id="illness" class="form-control">
+                                        <option value="">Select</option>
+                                        <option value="0">No</option>
+                                        <option value="1">Yes</option>
+                                    </select>
+                                </div>
+
+                                <div class="question-group">
+                                    <label for="loneliness" class="font3">10. How often do you feel lonely or
+                                        isolated?</label>
+                                    <select name="loneliness" id="loneliness" class="form-control">
+                                        <option value="">Select frequency</option>
+                                        <option value="1">Rarely</option>
+                                        <option value="2">Sometimes</option>
+                                        <option value="3">Often</option>
+                                        <option value="4">Very often</option>
+                                        <option value="5">Always</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <!-- Right Column -->
+                            <div class="question-column">
+                                <div class="question-group">
+                                    <label for="workload" class="font3">11. How often do you feel overwhelmed with your
+                                        academic workload?</label>
+                                    <select name="workload" id="workload" class="form-control">
+                                        <option value="">Select frequency</option>
+                                        <option value="1">Rarely</option>
+                                        <option value="2">Sometimes</option>
+                                        <option value="3">Often</option>
+                                        <option value="4">Very often</option>
+                                        <option value="5">Always</option>
+                                    </select>
+                                </div>
+
+                                <div class="question-group">
+                                    <label for="competition" class="font3">12. Are you in competition with your peers
+                                        and does it affect you?</label>
+                                    <select name="competition" id="competition" class="form-control">
+                                        <option value="">Select</option>
+                                        <option value="0">No</option>
+                                        <option value="1">Yes</option>
+                                    </select>
+                                </div>
+
+                                <div class="question-group">
+                                    <label for="relationship" class="font3">13. Do you find that your relationship often
+                                        causes you stress?</label>
+                                    <select name="relationship" id="relationship" class="form-control">
+                                        <option value="">Select</option>
+                                        <option value="0">No</option>
+                                        <option value="1">Yes</option>
+                                    </select>
+                                </div>
+
+                                <div class="question-group">
+                                    <label for="professors" class="font3">14. Are you facing any difficulties with your
+                                        professors or instructors?</label>
+                                    <select name="professors" id="professors" class="form-control">
+                                        <option value="">Select</option>
+                                        <option value="0">No</option>
+                                        <option value="1">Yes</option>
+                                    </select>
+                                </div>
+
+                                <div class="question-group">
+                                    <label for="work-env" class="font3">15. Is your working environment unpleasant or
+                                        stressful?</label>
+                                    <select name="work-env" id="work-env" class="form-control">
+                                        <option value="">Select</option>
+                                        <option value="0">No</option>
+                                        <option value="1">Yes</option>
+                                    </select>
+                                </div>
+
+                                <div class="question-group">
+                                    <label for="relaxation" class="font3">16. How often do you struggle to find time for
+                                        relaxation and leisure activities?</label>
+                                    <select name="relaxation" id="relaxation" class="form-control">
+                                        <option value="">Select frequency</option>
+                                        <option value="1">Rarely</option>
+                                        <option value="2">Sometimes</option>
+                                        <option value="3">Often</option>
+                                        <option value="4">Very often</option>
+                                        <option value="5">Always</option>
+                                    </select>
+                                </div>
+
+                                <div class="question-group">
+                                    <label for="home-env" class="font3">17. Is your hostel or home environment causing
+                                        you difficulties?</label>
+                                    <select name="home-env" id="home-env" class="form-control">
+                                        <option value="">Select</option>
+                                        <option value="0">No</option>
+                                        <option value="1">Yes</option>
+                                    </select>
+                                </div>
+
+                                <div class="question-group">
+                                    <label for="academic-confidence" class="font3">18. Do you lack confidence in your
+                                        academic performance?</label>
+                                    <select name="academic-confidence" id="academic-confidence" class="form-control">
+                                        <option value="">Select</option>
+                                        <option value="0">No</option>
+                                        <option value="1">Yes</option>
+                                    </select>
+                                </div>
+
+                                <div class="question-group">
+                                    <label for="subject-confidence" class="font3">19. Do you lack confidence in your
+                                        choice of academic subjects?</label>
+                                    <select name="subject-confidence" id="subject-confidence" class="form-control">
+                                        <option value="">Select</option>
+                                        <option value="0">No</option>
+                                        <option value="1">Yes</option>
+                                    </select>
+                                </div>
+
+                                <div class="question-group">
+                                    <label for="extracurricular" class="font3">20. Are academic and extracurricular
+                                        activities conflicting for you?</label>
+                                    <select name="extracurricular" id="extracurricular" class="form-control">
+                                        <option value="">Select</option>
+                                        <option value="0">No</option>
+                                        <option value="1">Yes</option>
+                                    </select>
+                                </div>
+
+                                <div class="question-group">
+                                    <label for="attendance" class="font3">21. Do you attend classes regularly?</label>
+                                    <select name="attendance" id="attendance" class="form-control">
+                                        <option value="">Select</option>
+                                        <option value="0">No</option>
+                                        <option value="1">Yes</option>
+                                    </select>
+                                </div>
+
+                                <div class="question-group">
+                                    <label for="weight" class="font3">22. Have you gained or lost weight?</label>
+                                    <select name="weight" id="weight" class="form-control">
+                                        <option value="">Select</option>
+                                        <option value="0">No</option>
+                                        <option value="1">Yes</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="submit-section">
+                            <button type="submit" class="submit-btn">Submit Data for Prediction</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="about-section" class="section" style="display:none;">
+                    <h1 class="font3">About</h1>
+                    <p class="font3">Information about the StressType Predictor app.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="social-section">
+                <h3>Connect With Us</h3>
+                <div class="social-icons">
+                    <a href="https://github.com/Swastik1005A" target="_blank" class="social-icon"><i
+                            class="fab fa-github"></i></a>
+                    <a href="https://x.com/SwastikSenDz" target="_blank" class="social-icon"><i
+                            class="fab fa-twitter"></i></a>
+                    <a href="https://www.linkedin.com/in/swastik-sen-155572359?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
+                        target="_blank" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://www.instagram.com/swastik77346?igsh=cnIyeDlkbGgxM3Nu" target="_blank"
+                        class="social-icon"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="footer-bottom-content">
+                <p>🌟 Your mental health matters. Take care of yourself, student! 🌟</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+
+</html>
