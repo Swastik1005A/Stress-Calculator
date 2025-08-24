@@ -1,5 +1,6 @@
 Flask==2.3.3
 numpy==1.24.3
 scikit-learn==1.3.0
-xgboost==1.7.6
+xgboost==1.7.6 --prefer-binary
 Werkzeug==2.3.7
+gunicorn==21.2.0
