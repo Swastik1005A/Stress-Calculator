@@ -92,9 +92,9 @@ def predict():
         
         # Map prediction to stress level
         stress_levels = {
-            0: "Low Stress",
+            2: "Low Stress",
             1: "Moderate Stress", 
-            2: "High Stress"
+            0: "High Stress"
         }
         
         result = {
