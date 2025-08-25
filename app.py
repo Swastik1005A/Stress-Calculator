@@ -102,9 +102,9 @@ def predict():
             'stress_level': stress_levels.get(int(prediction), "Unknown"),
             'confidence': float(max(prediction_proba)),
             'probabilities': {
-                'low_stress': float(prediction_proba[0]),
+                'low_stress': float(prediction_proba[2]),
                 'moderate_stress': float(prediction_proba[1]),
-                'high_stress': float(prediction_proba[2])
+                'high_stress': float(prediction_proba[0])
             }
         }
         
